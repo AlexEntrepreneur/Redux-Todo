@@ -4,16 +4,14 @@ import {
   TOGGLE_TODO_COMPLETE
 } from '../actions/action-constants';
 
-const initialState = {
-  todos: []
-};
+const initialTodosState = [];
 
-export function todosState(state = initialState, action) {
+export function todosState(state = initialTodosState, action) {
   switch (action.type) {
   case ADD_TODO:
-    return state.todos.concat(action.payload);
+    return state.concat(action.payload)
   case TOGGLE_TODO_COMPLETE:
-    return state.todos.map(todo => {
+    return state.map(todo => {
       if (todo.id === action.payload) {
         todo.completed = !todo.completed;
         return todo;
@@ -21,7 +19,7 @@ export function todosState(state = initialState, action) {
       return todo;
     });
   case CLEAR_COMPLETED_TODOS:
-    return state.todos.filter(todo => todo.completed === false);
+    return state.filter(todo => todo.completed === false);
   default:
     return state;
   }

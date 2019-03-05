@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {
+  addTodo,
+  clearCompletedTodos
+} from '../../actions/action-creators';
 import './TodoForm.css';
 
 class TodoForm extends Component {
@@ -19,4 +25,11 @@ class TodoForm extends Component {
   }
 }
 
-export default TodoForm;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    addTodo,
+    clearCompletedTodos
+  }, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(TodoForm);
