@@ -4,7 +4,8 @@ import {
   TOGGLE_TODO_COMPLETE
 } from '../actions/action-constants';
 
-const initialTodosState = [];
+const storedTodos = JSON.parse(localStorage.getItem('ReactReduxTodo'));
+const initialTodosState = storedTodos || [];
 
 export function todosState(state = initialTodosState, action) {
   switch (action.type) {

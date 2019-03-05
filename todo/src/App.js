@@ -4,6 +4,11 @@ import TodoList from './components/TodoList/TodoList';
 import TodoForm from './components/TodoForm/TodoForm';
 
 class App extends Component {
+  componentDidUpdate() {
+    const todosString = JSON.stringify(this.props.todos);
+    localStorage.setItem('ReactReduxTodo', todosString);
+  }
+
   render() {
     return (
       <div className="App">
