@@ -31,7 +31,11 @@ class TodoForm extends Component {
             ref={this.taskInputBox}
           />
         </div>
-        <button>Clear Complete Todos</button>
+        <button
+          onClick={this.props.clearCompletedTodos}
+        >
+        Clear Complete Todos
+      </button>
       </div>
     );
   }
