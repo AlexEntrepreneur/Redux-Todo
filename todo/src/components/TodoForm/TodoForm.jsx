@@ -11,7 +11,8 @@ class TodoForm extends Component {
   taskInputBox = React.createRef();
 
   onTaskInputKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    const formisFilled = this.taskInputBox.current.value !== '';
+    if (event.key === 'Enter' && formisFilled) {
       this.props.addTodo({ value: this.taskInputBox.current.value });
       this.taskInputBox.current.value = '';
       this.taskInputBox.current.focus();
