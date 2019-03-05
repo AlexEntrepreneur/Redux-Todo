@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
+import { todosState } from './reducers/reducers';
 import './index.css';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({ todosState });
 
 const store = createStore(
   rootReducer,
