@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { toggleTodoComplete } from '../../actions/action-creators';
 import './TodoList.css'
 
 class TodoList extends Component {
@@ -16,6 +19,7 @@ class TodoList extends Component {
                 <input
                   type="checkbox"
                   checked={todo.completed}
+                  onChange={() => this.props.toggleTodoComplete(todo.id)}
                 />
               </div>
             )
@@ -26,4 +30,10 @@ class TodoList extends Component {
   }
 }
 
-export default TodoList;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    toggleTodoComplete
+  }, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(TodoList);
